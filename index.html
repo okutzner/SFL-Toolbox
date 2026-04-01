@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Short Form Learning Toolbox — a suite of tools to scope, prioritise, and kick-off SFL projects at Curtin University." />
+  <meta name="theme-color" content="#111111" />
+
+  <!-- Preload the above-the-fold logo so it doesn't block LCP -->
+  <link rel="preload" href="https://okutzner.github.io/SFL-Prioritisation/curtin.png" as="image" fetchpriority="high" />
+
+  <title>Short Form Learning Toolbox — Curtin University</title>
+
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --yellow:      #FFD000;
+      --black:       #111111;
+      --white:       #FFFFFF;
+      --grey-bg:     #F4F4F2;
+      --grey-mid:    #D6D6D2;
+      --grey-txt:    #595959; /* 7.4:1 on white — passes WCAG AA */
+      --card-radius: 16px;
+      --font:        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --transition:  0.35s cubic-bezier(.25,.8,.25,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--grey-bg);
+      color: var(--black);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── SKIP LINK ── */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 9999;
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 18px;
+      border-radius: 0 0 10px 10px;
+      text-decoration: none;
+      transition: top 0.15s;
+    }
+    .skip-link:focus { top: 0; outline: 3px solid var(--black); outline-offset: 2px; }
+
+    /* ── FOCUS RING ── */
+    :focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    a.card:focus-visible {
+      outline-offset: 0;
+      border-radius: var(--card-radius);
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--black);
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--yellow);
+    }
+
+    .logo-wrap img {
+      height: 36px;
+      width: auto;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+
+    /* #FFD000 on #111111 = 10.3:1 — passes AAA */
+    .header-badge {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      border: 1px solid rgba(255,208,0,0.4);
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--black);
+      color: var(--white);
+      padding: 80px 48px 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: var(--yellow);
+      pointer-events: none;
+    }
+    .hero::before { top: -80px;   right: -80px; width: 420px; height: 420px; opacity: 0.06; }
+    .hero::after  { bottom: -100px; left: 30%;  width: 300px; height: 300px; opacity: 0.04; }
+
+    .hero-inner { max-width: 760px; position: relative; }
+
+    .hero-kicker {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-kicker::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 2px;
+      background: var(--yellow);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+    h1 em { font-style: italic; color: var(--yellow); }
+
+    /* rgba(255,255,255,0.75) on #111 ≈ 10.4:1 — passes AAA */
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ── TOOLS SECTION ── */
+    .tools-section {
+      padding: 72px 48px 96px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--grey-txt);
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--grey-mid); }
+
+    /* Semantic list — screen readers announce item count */
+    .grid {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--white);
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--grey-mid);
+      /* Only composite properties animated — avoids layout/paint cost */
+      transition: transform var(--transition), box-shadow var(--transition);
+      will-change: transform;
+      /* Defer rendering of off-screen cards */
+      content-visibility: auto;
+      contain-intrinsic-size: 0 380px;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
+    }
+    .card:hover .card-arrow {
+      transform: translate(3px,-3px);
+      background: var(--yellow);
+      color: var(--black);
+      border-color: var(--yellow);
+    }
+
+    .card-thumb {
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card:nth-child(1) .card-thumb { background: #111111; }
+    .card:nth-child(2) .card-thumb { background: #1A1A2E; }
+    .card:nth-child(3) .card-thumb { background: #0D1F2D; }
+
+    .thumb-art { position: absolute; inset: 0; pointer-events: none; }
+
+    .thumb-label { position: relative; z-index: 2; text-align: center; padding: 0 24px; }
+    .thumb-icon  { font-size: 2.6rem; line-height: 1; margin-bottom: 10px; display: block; }
+    .thumb-title { font-weight: 700; font-size: 1.15rem; color: var(--white); line-height: 1.25; }
+
+    .card-num {
+      position: absolute; top: 16px; left: 16px;
+      width: 28px; height: 28px;
+      background: var(--yellow); color: var(--black);
+      font-size: 11px; font-weight: 700;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 3;
+    }
+
+    .card-body { padding: 28px 28px 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .card-name { font-weight: 700; font-size: 1.25rem; line-height: 1.2; color: var(--black); }
+    .card-desc { font-size: 0.88rem; color: var(--grey-txt); line-height: 1.65; flex: 1; }
+
+    .card-footer {
+      padding: 0 28px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    /* 12px min size; 7.4:1 on white */
+    .card-tag {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--grey-txt);
+      background: var(--grey-bg);
+      padding: 4px 10px; border-radius: 20px;
+    }
+
+    .card-arrow {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1.5px solid var(--grey-mid);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+      transition: background var(--transition), color var(--transition),
+                  transform var(--transition), border-color var(--transition);
+      color: var(--black);
+      will-change: transform;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      /* rgba(255,255,255,0.6) on #111 ≈ 6.5:1 — passes AA */
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 28px 48px;
+      font-size: 0.85rem;
+      border-top: 3px solid var(--yellow);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-inner { animation: fadeUp 0.7s ease both; }
+
+    .card { opacity: 0; animation: fadeUp 0.6s ease both; }
+    .card:nth-child(1) { animation-delay: 0.15s; }
+    .card:nth-child(2) { animation-delay: 0.28s; }
+    .card:nth-child(3) { animation-delay: 0.41s; }
+
+    /* Honour the user's motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      /* Cards must be visible even without animation */
+      .card, .hero-inner { opacity: 1; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      header         { padding: 0 20px; }
+      .hero          { padding: 56px 20px; }
+      .tools-section { padding: 48px 20px 64px; }
+      footer         { padding: 24px 20px; }
+    }
+
+    /* Windows High Contrast Mode */
+    @media (forced-colors: active) {
+      .card       { border: 2px solid ButtonText; }
+      .card:hover { border-color: Highlight; }
+      .card-arrow { forced-color-adjust: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Skip navigation — first focusable element on the page -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header>
+    <div class="logo-wrap">
+      <!-- Explicit width/height prevent Cumulative Layout Shift (CLS) -->
+      <img
+        src="https://okutzner.github.io/SFL-Prioritisation/curtin.png"
+        alt="Curtin University"
+        width="240"
+        height="60"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </div>
+    <!-- Purely decorative badge — hidden from screen readers -->
+    <span class="header-badge" aria-hidden="true">SFL Toolbox</span>
+  </header>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-inner">
+        <!-- Repeats h1 text visually — hidden from AT to avoid duplication -->
+        <p class="hero-kicker" aria-hidden="true">Short Form Learning</p>
+        <h1 id="hero-heading">Short Form Learning <em>Toolbox</em></h1>
+        <p class="hero-sub">
+          A suite of tools to help scope, prioritise, and kick-off your next
+          Short Form Learning project — from brief to build.
+        </p>
+      </div>
+    </section>
+
+    <!-- TOOLS GRID -->
+    <section class="tools-section" aria-label="Available tools">
+      <!-- Decorative heading label — section labelled via aria-label above -->
+      <p class="section-label" aria-hidden="true">Available Tools</p>
+
+      <!-- <ul> announces item count to screen readers -->
+      <ul class="grid" role="list">
+
+        <!-- ① Project Prioritisation -->
+        <li>
+          <a
+            class="card"
+            href="https://okutzner.github.io/SFL-Prioritisation/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Project Prioritisation Tool — opens in a new tab"
+          >
+            <div class="card-thumb">
+              <!-- Decorative illustration -->
+              <svg class="thumb-art" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <rect width="360" height="200" fill="#111111"/>
+                <rect x="40"  y="120" width="32" height="56"  rx="4" fill="#FFD000" opacity="0.15"/>
+                <rect x="86"  y="88"  width="32" height="88"  rx="4" fill="#FFD000" opacity="0.25"/>
+                <rect x="132" y="56"  width="32" height="120" rx="4" fill="#FFD000" opacity="0.45"/>
+                <rect x="178" y="32"  width="32" height="144" rx="4" fill="#FFD000" opacity="0.7"/>
+                <rect x="224" y="72"  width="32" height="104" rx="4" fill="#FFD000" opacity="0.35"/>
+                <rect x="270" y="100" width="32" height="76"  rx="4" fill="#FFD000" opacity="0.2"/>
+                <polyline points="56,120 102,88 148,56 194,32 240,72 286,100" fill="none" stroke="#FFD000" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
+                <circle cx="56"  cy="120" r="4" fill="#FFD000" opacity="0.8"/>
+                <circle cx="102" cy="88"  r="4" fill="#FFD000" opacity="0.8"/>
+                <circle cx="148" cy="56"  r="4" fill="#FFD000" opacity="0.8"/>
+                <circle cx="194" cy="32"  r="4" fill="#FFD000" opacity="0.8"/>
+              </svg>
+              <span class="card-num" aria-hidden="true">01</span>
+              <div class="thumb-label" aria-hidden="true">
+                <span class="thumb-icon">📊</span>
+                <span class="thumb-title">Project Prioritisation</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h2 class="card-name">Project Prioritisation Tool</h2>
+              <p class="card-desc">
+                Score and rank incoming SFL project proposals against key strategic criteria —
+                so your team always resources the highest-impact work first.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag">Decision Support</span>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        </li>
+
+        <!-- ② Client Brief -->
+        <li>
+          <a
+            class="card"
+            href="https://okutzner.github.io/SFL-Client_Brief/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Client Brief Form — opens in a new tab"
+          >
+            <div class="card-thumb">
+              <svg class="thumb-art" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <rect width="360" height="200" fill="#1A1A2E"/>
+                <rect x="40" y="44"  width="200" height="6" rx="3" fill="#FFD000" opacity="0.7"/>
+                <rect x="40" y="64"  width="140" height="4" rx="2" fill="white" opacity="0.15"/>
+                <rect x="40" y="82"  width="200" height="4" rx="2" fill="white" opacity="0.1"/>
+                <rect x="40" y="100" width="160" height="4" rx="2" fill="white" opacity="0.1"/>
+                <rect x="40" y="118" width="200" height="4" rx="2" fill="white" opacity="0.1"/>
+                <rect x="40" y="136" width="120" height="4" rx="2" fill="white" opacity="0.1"/>
+                <rect x="40"  y="160" width="28" height="16" rx="8" fill="#FFD000" opacity="0.9"/>
+                <rect x="74"  y="160" width="28" height="16" rx="8" fill="white" opacity="0.15"/>
+                <rect x="108" y="160" width="28" height="16" rx="8" fill="white" opacity="0.15"/>
+                <rect x="142" y="160" width="28" height="16" rx="8" fill="white" opacity="0.15"/>
+                <rect x="176" y="160" width="28" height="16" rx="8" fill="white" opacity="0.15"/>
+                <rect x="210" y="160" width="28" height="16" rx="8" fill="white" opacity="0.15"/>
+                <circle cx="300" cy="80" r="50" fill="none" stroke="#FFD000" stroke-width="1.5" opacity="0.12"/>
+                <circle cx="300" cy="80" r="35" fill="none" stroke="#FFD000" stroke-width="1"   opacity="0.1"/>
+              </svg>
+              <span class="card-num" aria-hidden="true">02</span>
+              <div class="thumb-label" aria-hidden="true">
+                <span class="thumb-icon">📝</span>
+                <span class="thumb-title">Client Brief</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h2 class="card-name">Client Brief Form</h2>
+              <p class="card-desc">
+                A guided 6-step intake form for new clients — capturing goals, audience, style,
+                and budget so your team can craft a tailored learning proposal.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag">Client Intake</span>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        </li>
+
+        <!-- ③ Readiness Assessment -->
+        <li>
+          <a
+            class="card"
+            href="https://okutzner.github.io/SFL-Assessment/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Project Readiness Check — opens in a new tab"
+          >
+            <div class="card-thumb">
+              <svg class="thumb-art" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <rect width="360" height="200" fill="#0D1F2D"/>
+                <circle cx="180" cy="130" r="90" fill="none" stroke="white" stroke-width="1" opacity="0.06"/>
+                <circle cx="180" cy="130" r="68" fill="none" stroke="white" stroke-width="1" opacity="0.06"/>
+                <path d="M 90 130 A 90 90 0 0 1 270 130" fill="none" stroke="#FFD000" stroke-width="10" opacity="0.12" stroke-linecap="round"/>
+                <path d="M 90 130 A 90 90 0 0 1 229 62"  fill="none" stroke="#FFD000" stroke-width="10" opacity="0.5"  stroke-linecap="round"/>
+                <line x1="180" y1="130" x2="228" y2="62" stroke="#FFD000" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
+                <circle cx="180" cy="130" r="8" fill="#FFD000" opacity="0.9"/>
+                <circle cx="180" cy="130" r="4" fill="#0D1F2D"/>
+                <text x="94"  y="148" fill="white" opacity="0.3" font-size="10" font-family="sans-serif">Low</text>
+                <text x="155" y="40"  fill="#FFD000" opacity="0.7" font-size="10" font-family="sans-serif">Ready</text>
+                <text x="258" y="148" fill="white" opacity="0.3" font-size="10" font-family="sans-serif">High</text>
+              </svg>
+              <span class="card-num" aria-hidden="true">03</span>
+              <div class="thumb-label" aria-hidden="true">
+                <span class="thumb-icon">✅</span>
+                <span class="thumb-title">Readiness Assessment</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h2 class="card-name">Project Readiness Check</h2>
+              <p class="card-desc">
+                Run a quick diagnostic before any project kicks off — assess content, stakeholder
+                alignment, and resource readiness to surface risks early.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag">Project Health</span>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Short Form Learning — Curtin University &nbsp;·&nbsp; Learning Design &amp; Technology</p>
+  </footer>
+
+</body>
+</html>
