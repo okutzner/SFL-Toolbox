@@ -68,11 +68,10 @@
     /* ── HEADER ── */
     header {
       background: var(--black);
-      padding: 0 48px;
+      padding: 20px 48px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      height: 72px;
+      justify-content: center;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -80,23 +79,12 @@
     }
 
     .logo-wrap img {
-      height: 36px;
+      height: 60px;
       width: auto;
       display: block;
       filter: brightness(0) invert(1);
     }
 
-    /* #FFD000 on #111111 = 10.3:1 — passes AAA */
-    .header-badge {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--yellow);
-      border: 1px solid rgba(255,208,0,0.4);
-      padding: 5px 12px;
-      border-radius: 20px;
-    }
 
     /* ── HERO ── */
     .hero {
@@ -339,8 +327,6 @@
         decoding="async"
       />
     </div>
-    <!-- Purely decorative badge — hidden from screen readers -->
-    <span class="header-badge" aria-hidden="true">SFL Toolbox</span>
   </header>
 
   <main id="main-content">
