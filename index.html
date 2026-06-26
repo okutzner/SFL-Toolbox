@@ -53,6 +53,7 @@
     .card:nth-child(2) .card-thumb { background: #1A1A2E; }
     .card:nth-child(3) .card-thumb { background: #0D1F2D; }
     .card:nth-child(4) .card-thumb { background: #1A0D2E; }
+    .card:nth-child(5) .card-thumb { background: #0D2E1A; }
     .thumb-art { position: absolute; inset: 0; pointer-events: none; }
     .thumb-label { position: relative; z-index: 2; text-align: center; padding: 0 24px; }
     .thumb-icon  { font-size: 2.6rem; line-height: 1; margin-bottom: 10px; display: block; }
@@ -72,6 +73,7 @@
     .card:nth-child(2) { animation-delay: 0.28s; }
     .card:nth-child(3) { animation-delay: 0.41s; }
     .card:nth-child(4) { animation-delay: 0.54s; }
+    .card:nth-child(5) { animation-delay: 0.67s; }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
       .card, .hero-inner { opacity: 1; }
@@ -288,6 +290,54 @@
             </div>
             <div class="card-footer">
               <span class="card-tag">Enrolment Data</span>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        </li>
+
+        <!-- ⑤ SIS Import Generator -->
+        <li>
+          <a
+            class="card"
+            href="https://sfl-sis-import-generator.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="SIS Import Generator — opens in a new tab"
+          >
+            <div class="card-thumb">
+              <svg class="thumb-art" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <rect width="360" height="200" fill="#0D2E1A"/>
+                <!-- CSV rows -->
+                <rect x="40" y="48"  width="280" height="10" rx="2" fill="#FFD000" opacity="0.70"/>
+                <rect x="40" y="68"  width="280" height="10" rx="2" fill="white"   opacity="0.08"/>
+                <rect x="40" y="84"  width="280" height="10" rx="2" fill="white"   opacity="0.06"/>
+                <rect x="40" y="100" width="280" height="10" rx="2" fill="white"   opacity="0.08"/>
+                <rect x="40" y="116" width="280" height="10" rx="2" fill="white"   opacity="0.06"/>
+                <rect x="40" y="132" width="280" height="10" rx="2" fill="white"   opacity="0.08"/>
+                <!-- Column dividers -->
+                <line x1="110" y1="44" x2="110" y2="148" stroke="white" stroke-width="1" opacity="0.08"/>
+                <line x1="190" y1="44" x2="190" y2="148" stroke="white" stroke-width="1" opacity="0.08"/>
+                <line x1="260" y1="44" x2="260" y2="148" stroke="white" stroke-width="1" opacity="0.08"/>
+                <!-- Download arrow -->
+                <line x1="180" y1="158" x2="180" y2="180" stroke="#FFD000" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+                <polyline points="168,170 180,182 192,170" fill="none" stroke="#FFD000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+              </svg>
+              <span class="card-num" aria-hidden="true">05</span>
+              <div class="thumb-label" aria-hidden="true">
+                <span class="thumb-icon">📤</span>
+                <span class="thumb-title">SIS Import Generator</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h2 class="card-name">SIS Import Generator</h2>
+              <p class="card-desc">
+                Fetches learner data from Canvas and Catalog, then exports
+                ENROLMENTS.csv and ADMISSIONS.csv ready for Student 1 (S1) submission —
+                all processed in-browser, nothing stored on the server.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag">S1 Export</span>
               <span class="card-arrow" aria-hidden="true">↗</span>
             </div>
           </a>
