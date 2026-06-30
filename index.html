@@ -54,6 +54,7 @@
     .card:nth-child(3) .card-thumb { background: #0D1F2D; }
     .card:nth-child(4) .card-thumb { background: #1A0D2E; }
     .card:nth-child(5) .card-thumb { background: #0D2E1A; }
+    .card:nth-child(6) .card-thumb { background: #2E1A0D; }
     .thumb-art { position: absolute; inset: 0; pointer-events: none; }
     .thumb-label { position: relative; z-index: 2; text-align: center; padding: 0 24px; }
     .thumb-icon  { font-size: 2.6rem; line-height: 1; margin-bottom: 10px; display: block; }
@@ -74,6 +75,7 @@
     .card:nth-child(3) { animation-delay: 0.41s; }
     .card:nth-child(4) { animation-delay: 0.54s; }
     .card:nth-child(5) { animation-delay: 0.67s; }
+    .card:nth-child(6) { animation-delay: 0.80s; }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
       .card, .hero-inner { opacity: 1; }
@@ -338,6 +340,46 @@
             </div>
             <div class="card-footer">
               <span class="card-tag">S1 Export</span>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        </li>
+
+        <!-- ⑥ Learner Email Extract -->
+        <li>
+          <a
+            class="card"
+            href="https://sfl-email-extract.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Learner Email Extract — restricted access, opens in a new tab"
+          >
+            <div class="card-thumb">
+              <svg class="thumb-art" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <rect width="360" height="200" fill="#2E1A0D"/>
+                <!-- Envelope -->
+                <rect x="110" y="62" width="140" height="92" rx="6" fill="none" stroke="#FFD000" stroke-width="2.5" opacity="0.8"/>
+                <polyline points="110,68 180,118 250,68" fill="none" stroke="#FFD000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+                <!-- Lock badge -->
+                <circle cx="250" cy="146" r="22" fill="#2E1A0D" stroke="#FFD000" stroke-width="2" opacity="0.9"/>
+                <rect x="241" y="144" width="18" height="14" rx="2" fill="none" stroke="#FFD000" stroke-width="2" opacity="0.9"/>
+                <path d="M 244 144 v -6 a 6 6 0 0 1 12 0 v 6" fill="none" stroke="#FFD000" stroke-width="2" opacity="0.9"/>
+              </svg>
+              <span class="card-num" aria-hidden="true">06</span>
+              <div class="thumb-label" aria-hidden="true">
+                <span class="thumb-icon">✉️</span>
+                <span class="thumb-title">Learner Email Extract</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h2 class="card-name">Learner Email Extract</h2>
+              <p class="card-desc">
+                Filter enrolments by course run and date, then export learner names
+                and email addresses as a CSV. Password-protected — authorised staff only.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag">Restricted Access</span>
               <span class="card-arrow" aria-hidden="true">↗</span>
             </div>
           </a>
