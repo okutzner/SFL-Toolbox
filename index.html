@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Short Form Learning Toolbox — a suite of tools to scope, prioritise, and kick-off SFL projects at Curtin University." />
+  <meta name="description" content="Short Form Learning Toolbox — a suite of tools to scope, track, and kick-off SFL projects at Curtin University." />
   <meta name="theme-color" content="#111111" />
 
   <!-- Preload the above-the-fold logo so it doesn't block LCP -->
@@ -207,11 +207,16 @@
       align-items: center;
       justify-content: center;
     }
+
+
+
     .grid li:nth-child(1) .card-thumb { background: #111111; }
-    .grid li:nth-child(2) .card-thumb { background: #1A1A2E; }
-    .grid li:nth-child(3) .card-thumb { background: #0D1F2D; }
-    .grid li:nth-child(4) .card-thumb { background: #1A2E2A; }
-    .grid li:nth-child(5) .card-thumb { background: #2E1A0D; }
+    .grid li:nth-child(2) .card-thumb { background: #1A0D2E; }
+    .grid li:nth-child(3) .card-thumb { background: #162A1F; }
+    .grid li:nth-child(4) .card-thumb { background: #1A1A2E; }
+    .grid li:nth-child(5) .card-thumb { background: #0D1F2D; }
+    .grid li:nth-child(6) .card-thumb { background: #1A2E2A; }
+    .grid li:nth-child(7) .card-thumb { background: #2E1A0D; }
 
     .thumb-art { position: absolute; inset: 0; pointer-events: none; }
 
@@ -279,11 +284,15 @@
     .hero-inner { animation: fadeUp 0.7s ease both; }
 
     .card { opacity: 0; animation: fadeUp 0.6s ease both; }
+
+
     .grid li:nth-child(1) .card { animation-delay: 0.15s; }
     .grid li:nth-child(2) .card { animation-delay: 0.28s; }
     .grid li:nth-child(3) .card { animation-delay: 0.41s; }
     .grid li:nth-child(4) .card { animation-delay: 0.54s; }
     .grid li:nth-child(5) .card { animation-delay: 0.67s; }
+    .grid li:nth-child(6) .card { animation-delay: 0.80s; }
+    .grid li:nth-child(7) .card { animation-delay: 0.93s; }
 
     /* Honour the user's motion preference */
     @media (prefers-reduced-motion: reduce) {
@@ -341,7 +350,7 @@
         <p class="hero-kicker" aria-hidden="true">Short Form Learning</p>
         <h1 id="hero-heading">Short Form Learning <em>Toolbox</em></h1>
         <p class="hero-sub">
-          A suite of tools to help scope, prioritise, and kick-off your next
+          A suite of tools to help scope, track, and kick-off your next
           Short Form Learning project — from brief to build.
         </p>
       </div>
@@ -355,51 +364,126 @@
       <!-- <ul> announces item count to screen readers -->
       <ul class="grid" role="list">
 
-        <!-- ① Project Prioritisation -->
+        <!-- Canvas Course Timeline -->
         <li>
           <a
             class="card"
-            href="https://okutzner.github.io/SFL-Prioritisation/"
+            href="https://canvas-timeline-1sue.onrender.com"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Project Prioritisation Tool — opens in a new tab"
+            aria-label="Canvas Course Timeline — opens in a new tab"
           >
             <div class="card-thumb">
-              <!-- Decorative illustration -->
               <svg class="thumb-art" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
                 <rect width="360" height="200" fill="#111111"/>
-                <rect x="40"  y="120" width="32" height="56"  rx="4" fill="#FFD000" opacity="0.15"/>
-                <rect x="86"  y="88"  width="32" height="88"  rx="4" fill="#FFD000" opacity="0.25"/>
-                <rect x="132" y="56"  width="32" height="120" rx="4" fill="#FFD000" opacity="0.45"/>
-                <rect x="178" y="32"  width="32" height="144" rx="4" fill="#FFD000" opacity="0.7"/>
-                <rect x="224" y="72"  width="32" height="104" rx="4" fill="#FFD000" opacity="0.35"/>
-                <rect x="270" y="100" width="32" height="76"  rx="4" fill="#FFD000" opacity="0.2"/>
-                <polyline points="56,120 102,88 148,56 194,32 240,72 286,100" fill="none" stroke="#FFD000" stroke-width="2" stroke-dasharray="6 4" opacity="0.6"/>
-                <circle cx="56"  cy="120" r="4" fill="#FFD000" opacity="0.8"/>
-                <circle cx="102" cy="88"  r="4" fill="#FFD000" opacity="0.8"/>
-                <circle cx="148" cy="56"  r="4" fill="#FFD000" opacity="0.8"/>
-                <circle cx="194" cy="32"  r="4" fill="#FFD000" opacity="0.8"/>
+                <rect x="40" y="44" width="60" height="12" rx="3" fill="#FFD000" opacity="0.75"/>
+                <rect x="40" y="68" width="110" height="12" rx="3" fill="#FFD000" opacity="0.45"/>
+                <rect x="80" y="92" width="80" height="12" rx="3" fill="#FFD000" opacity="0.6"/>
+                <rect x="40" y="116" width="140" height="12" rx="3" fill="#FFD000" opacity="0.3"/>
+                <rect x="100" y="140" width="60" height="12" rx="3" fill="#FFD000" opacity="0.5"/>
+                <rect x="40" y="164" width="90" height="12" rx="3" fill="#FFD000" opacity="0.2"/>
+                <rect x="200" y="68" width="80" height="12" rx="3" fill="white" opacity="0.1"/>
+                <rect x="220" y="116" width="60" height="12" rx="3" fill="white" opacity="0.1"/>
+                <line x1="190" y1="30" x2="190" y2="185" stroke="#FFD000" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.5"/>
               </svg>
               <span class="card-num" aria-hidden="true">01</span>
               <div class="thumb-label" aria-hidden="true">
-                <span class="thumb-icon">📊</span>
-                <span class="thumb-title">Project Prioritisation</span>
+                <span class="thumb-icon">📅</span>
+                <span class="thumb-title">Canvas Course Timeline</span>
               </div>
             </div>
             <div class="card-body">
-              <h2 class="card-name">Project Prioritisation Tool</h2>
+              <h2 class="card-name">Canvas Course Timeline</h2>
               <p class="card-desc">
-                Score and rank incoming SFL project proposals against key strategic criteria —
-                so your team always resources the highest-impact work first.
+                A live Gantt-style timeline of all Curtin Canvas courses — showing availability,
+                published status, and EOI periods across all accounts. Auto-updates every 6 hours.
               </p>
             </div>
             <div class="card-footer">
-              <span class="card-tag">Decision Support</span>
+              <span class="card-tag">Course Tracking</span>
               <span class="card-arrow" aria-hidden="true">↗</span>
             </div>
           </a>
         </li>
-
+        <!-- Monthly Enrolment Report -->
+        <li>
+          <a
+            class="card"
+            href="https://sfl-monthly-report-2.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Monthly Enrolment Report — opens in a new tab"
+          >
+            <div class="card-thumb">
+              <svg class="thumb-art" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <rect width="360" height="200" fill="#1A0D2E"/>
+                <rect x="60"  y="110" width="30" height="60" rx="4" fill="#FFD000" opacity="0.3"/>
+                <rect x="104" y="80"  width="30" height="90" rx="4" fill="#FFD000" opacity="0.5"/>
+                <rect x="148" y="95"  width="30" height="75" rx="4" fill="#FFD000" opacity="0.4"/>
+                <rect x="192" y="55"  width="30" height="115" rx="4" fill="#FFD000" opacity="0.75"/>
+                <rect x="236" y="70"  width="30" height="100" rx="4" fill="#FFD000" opacity="0.6"/>
+                <line x1="50" y1="170" x2="290" y2="170" stroke="white" stroke-width="1" opacity="0.2"/>
+              </svg>
+              <span class="card-num" aria-hidden="true">02</span>
+              <div class="thumb-label" aria-hidden="true">
+                <span class="thumb-icon">📈</span>
+                <span class="thumb-title">Monthly Enrolment Report</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h2 class="card-name">Monthly Enrolment Report</h2>
+              <p class="card-desc">
+                Track learner enrolments by month, compare periods, and export the results
+                as a PDF for reporting.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag">Enrolment Data</span>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        </li>
+        <!-- Build Tracker -->
+        <li>
+          <a
+            class="card"
+            href="https://okutzner.github.io/SFL-Build_Tracker/index.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Build Tracker — opens in a new tab"
+          >
+            <div class="card-thumb">
+              <svg class="thumb-art" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <rect width="360" height="200" fill="#162A1F"/>
+                <rect x="36"  y="40" width="86" height="120" rx="6" fill="white" opacity="0.06"/>
+                <rect x="137" y="40" width="86" height="120" rx="6" fill="white" opacity="0.06"/>
+                <rect x="238" y="40" width="86" height="120" rx="6" fill="white" opacity="0.06"/>
+                <rect x="46"  y="54" width="66" height="18" rx="4" fill="#FFD000" opacity="0.35"/>
+                <rect x="46"  y="80" width="66" height="18" rx="4" fill="#FFD000" opacity="0.2"/>
+                <rect x="147" y="54" width="66" height="18" rx="4" fill="#FFD000" opacity="0.6"/>
+                <rect x="147" y="80" width="66" height="18" rx="4" fill="#FFD000" opacity="0.4"/>
+                <rect x="147" y="106" width="66" height="18" rx="4" fill="#FFD000" opacity="0.25"/>
+                <rect x="248" y="54" width="66" height="18" rx="4" fill="#FFD000" opacity="0.85"/>
+              </svg>
+              <span class="card-num" aria-hidden="true">03</span>
+              <div class="thumb-label" aria-hidden="true">
+                <span class="thumb-icon">🛠️</span>
+                <span class="thumb-title">Build Tracker</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h2 class="card-name">Build Tracker</h2>
+              <p class="card-desc">
+                A shared view of every build in the pipeline — see who owns it, what stage it is at,
+                and what is due next, across Canvas, video and comms projects.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag">Build Pipeline</span>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        </li>
         <!-- ② Client Brief -->
         <li>
           <a
@@ -427,7 +511,7 @@
                 <circle cx="300" cy="80" r="50" fill="none" stroke="#FFD000" stroke-width="1.5" opacity="0.12"/>
                 <circle cx="300" cy="80" r="35" fill="none" stroke="#FFD000" stroke-width="1"   opacity="0.1"/>
               </svg>
-              <span class="card-num" aria-hidden="true">02</span>
+              <span class="card-num" aria-hidden="true">04</span>
               <div class="thumb-label" aria-hidden="true">
                 <span class="thumb-icon">📝</span>
                 <span class="thumb-title">Client Brief</span>
@@ -446,7 +530,6 @@
             </div>
           </a>
         </li>
-
         <!-- ③ Readiness Assessment -->
         <li>
           <a
@@ -470,7 +553,7 @@
                 <text x="155" y="40"  fill="#FFD000" opacity="0.7" font-size="10" font-family="sans-serif">Ready</text>
                 <text x="258" y="148" fill="white" opacity="0.3" font-size="10" font-family="sans-serif">High</text>
               </svg>
-              <span class="card-num" aria-hidden="true">03</span>
+              <span class="card-num" aria-hidden="true">05</span>
               <div class="thumb-label" aria-hidden="true">
                 <span class="thumb-icon">✅</span>
                 <span class="thumb-title">Readiness Assessment</span>
@@ -489,7 +572,6 @@
             </div>
           </a>
         </li>
-
         <!-- ④ Badge Proposal -->
         <li>
           <a
@@ -508,7 +590,7 @@
                 <polygon points="156,154 170,154 164,184 156,176 148,184" fill="#FFD000" opacity="0.4"/>
                 <polygon points="190,154 204,154 212,184 204,176 196,184" fill="#FFD000" opacity="0.4"/>
               </svg>
-              <span class="card-num" aria-hidden="true">04</span>
+              <span class="card-num" aria-hidden="true">06</span>
               <div class="thumb-label" aria-hidden="true">
                 <span class="thumb-icon">🏅</span>
                 <span class="thumb-title">Badge Proposal</span>
@@ -527,7 +609,6 @@
             </div>
           </a>
         </li>
-
         <!-- ⑤ Learner Email Extract -->
         <li>
           <a
@@ -546,7 +627,7 @@
                 <rect x="241" y="144" width="18" height="14" rx="2" fill="none" stroke="#FFD000" stroke-width="2" opacity="0.9"/>
                 <path d="M 244 144 v -6 a 6 6 0 0 1 12 0 v 6" fill="none" stroke="#FFD000" stroke-width="2" opacity="0.9"/>
               </svg>
-              <span class="card-num" aria-hidden="true">05</span>
+              <span class="card-num" aria-hidden="true">07</span>
               <div class="thumb-label" aria-hidden="true">
                 <span class="thumb-icon">✉️</span>
                 <span class="thumb-title">Learner Email Extract</span>
