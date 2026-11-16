@@ -210,13 +210,16 @@
 
 
 
+
     .grid li:nth-child(1) .card-thumb { background: #111111; }
     .grid li:nth-child(2) .card-thumb { background: #1A0D2E; }
     .grid li:nth-child(3) .card-thumb { background: #162A1F; }
     .grid li:nth-child(4) .card-thumb { background: #1A1A2E; }
     .grid li:nth-child(5) .card-thumb { background: #0D1F2D; }
     .grid li:nth-child(6) .card-thumb { background: #1A2E2A; }
-    .grid li:nth-child(7) .card-thumb { background: #2E1A0D; }
+    .grid li:nth-child(7) .card-thumb { background: #2A1A2E; }
+    .grid li:nth-child(8) .card-thumb { background: #1F2A33; }
+    .grid li:nth-child(9) .card-thumb { background: #2E1A0D; }
 
     .thumb-art { position: absolute; inset: 0; pointer-events: none; }
 
@@ -286,13 +289,16 @@
     .card { opacity: 0; animation: fadeUp 0.6s ease both; }
 
 
+
     .grid li:nth-child(1) .card { animation-delay: 0.15s; }
-    .grid li:nth-child(2) .card { animation-delay: 0.28s; }
-    .grid li:nth-child(3) .card { animation-delay: 0.41s; }
-    .grid li:nth-child(4) .card { animation-delay: 0.54s; }
-    .grid li:nth-child(5) .card { animation-delay: 0.67s; }
-    .grid li:nth-child(6) .card { animation-delay: 0.80s; }
-    .grid li:nth-child(7) .card { animation-delay: 0.93s; }
+    .grid li:nth-child(2) .card { animation-delay: 0.25s; }
+    .grid li:nth-child(3) .card { animation-delay: 0.35s; }
+    .grid li:nth-child(4) .card { animation-delay: 0.45s; }
+    .grid li:nth-child(5) .card { animation-delay: 0.55s; }
+    .grid li:nth-child(6) .card { animation-delay: 0.65s; }
+    .grid li:nth-child(7) .card { animation-delay: 0.75s; }
+    .grid li:nth-child(8) .card { animation-delay: 0.85s; }
+    .grid li:nth-child(9) .card { animation-delay: 0.95s; }
 
     /* Honour the user's motion preference */
     @media (prefers-reduced-motion: reduce) {
@@ -609,6 +615,85 @@
             </div>
           </a>
         </li>
+        <!-- SFL Proposals -->
+        <li>
+          <a
+            class="card"
+            href="https://sfl-proposals.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="SFL Proposals — opens in a new tab"
+          >
+            <div class="card-thumb">
+              <svg class="thumb-art" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <rect width="360" height="200" fill="#2A1A2E"/>
+                <rect x="112" y="36" width="136" height="128" rx="8" fill="white" opacity="0.07"/>
+                <rect x="128" y="56" width="70" height="8" rx="4" fill="#FFD000" opacity="0.8"/>
+                <rect x="128" y="76" width="104" height="5" rx="2.5" fill="white" opacity="0.2"/>
+                <rect x="128" y="90" width="92" height="5" rx="2.5" fill="white" opacity="0.15"/>
+                <rect x="128" y="104" width="104" height="5" rx="2.5" fill="white" opacity="0.15"/>
+                <circle cx="136" cy="138" r="7" fill="#FFD000" opacity="0.9"/>
+                <circle cx="180" cy="138" r="7" fill="#FFD000" opacity="0.5"/>
+                <circle cx="224" cy="138" r="7" fill="white" opacity="0.2"/>
+                <line x1="143" y1="138" x2="173" y2="138" stroke="#FFD000" stroke-width="2" opacity="0.5"/>
+                <line x1="187" y1="138" x2="217" y2="138" stroke="white" stroke-width="2" opacity="0.2"/>
+              </svg>
+              <span class="card-num" aria-hidden="true">07</span>
+              <div class="thumb-label" aria-hidden="true">
+                <span class="thumb-icon">📋</span>
+                <span class="thumb-title">SFL Proposals</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h2 class="card-name">SFL Proposals</h2>
+              <p class="card-desc">
+                Propose a new credential or badge. Proposals are reviewed by your School Business Manager and Head of School before the Product Leadership Group makes the final decision.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag">Submit a Proposal</span>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        </li>
+        <!-- SFL Proposals Admin -->
+        <li>
+          <a
+            class="card"
+            href="https://sfl-proposals.onrender.com/admin"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="SFL Proposals Admin — restricted access — opens in a new tab"
+          >
+            <div class="card-thumb">
+              <svg class="thumb-art" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <rect width="360" height="200" fill="#1F2A33"/>
+                <rect x="70" y="48" width="220" height="104" rx="8" fill="white" opacity="0.06"/>
+                <rect x="70" y="48" width="220" height="22" rx="8" fill="#FFD000" opacity="0.35"/>
+                <rect x="86" y="86" width="90" height="6" rx="3" fill="white" opacity="0.25"/>
+                <rect x="86" y="106" width="130" height="6" rx="3" fill="white" opacity="0.15"/>
+                <rect x="86" y="126" width="110" height="6" rx="3" fill="white" opacity="0.15"/>
+                <circle cx="246" cy="112" r="20" fill="none" stroke="#FFD000" stroke-width="2.5" opacity="0.8"/>
+                <path d="M 238 112 l 6 6 l 12 -13" fill="none" stroke="#FFD000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+              </svg>
+              <span class="card-num" aria-hidden="true">08</span>
+              <div class="thumb-label" aria-hidden="true">
+                <span class="thumb-icon">🔐</span>
+                <span class="thumb-title">Proposals Admin</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h2 class="card-name">SFL Proposals Admin</h2>
+              <p class="card-desc">
+                Staff admin area for the proposals system — manage submitted proposals and keep them moving through review. Authorised staff only.
+              </p>
+            </div>
+            <div class="card-footer">
+              <span class="card-tag">Restricted Access</span>
+              <span class="card-arrow" aria-hidden="true">↗</span>
+            </div>
+          </a>
+        </li>
         <!-- ⑤ Learner Email Extract -->
         <li>
           <a
@@ -627,7 +712,7 @@
                 <rect x="241" y="144" width="18" height="14" rx="2" fill="none" stroke="#FFD000" stroke-width="2" opacity="0.9"/>
                 <path d="M 244 144 v -6 a 6 6 0 0 1 12 0 v 6" fill="none" stroke="#FFD000" stroke-width="2" opacity="0.9"/>
               </svg>
-              <span class="card-num" aria-hidden="true">07</span>
+              <span class="card-num" aria-hidden="true">09</span>
               <div class="thumb-label" aria-hidden="true">
                 <span class="thumb-icon">✉️</span>
                 <span class="thumb-title">Learner Email Extract</span>
